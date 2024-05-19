@@ -59,4 +59,15 @@ export class UserService {
     this.users = [...updatedUsers];
     return userToUpdate;
   }
+
+  delete(id: string): string {
+    const userToDelete = this.users.find((user) => user.id === +id);
+
+    if (!userToDelete) {
+      throw new NotFoundException('User not found');
+    }
+
+    this.users = [...this.users.filter((user) => user.id === +id)];
+    return `User ${userToDelete.firstName} successfully deleted`;
+  }
 }
