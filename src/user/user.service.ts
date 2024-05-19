@@ -19,4 +19,8 @@ export class UserService {
       lastName: 'Giciaa',
     },
   ];
+
+  findAll(): User[] {
+    return this.users;
+  }
 }
