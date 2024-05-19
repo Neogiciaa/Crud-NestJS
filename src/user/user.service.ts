@@ -1,5 +1,6 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import User from './user.interface';
+import CreateUserDto from './createUser.dto';
 
 @Injectable()
 export class UserService {
@@ -31,5 +32,10 @@ export class UserService {
       throw new NotFoundException('User not found');
     }
     return matchedUser;
+  }
+
+  create(user: CreateUserDto): string {
+    this.users.push(user);
+    return 'Successfully created user';
   }
 }
